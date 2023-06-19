@@ -6,7 +6,7 @@ import {
   BeforeInsert,
   OneToMany,
 } from "typeorm";
-import { hashSync } from "bcryptjs";
+import { getRounds, hashSync } from "bcryptjs";
 import { Exclude } from "class-transformer";
 import { Comments } from "./comments.entity";
 
@@ -33,9 +33,13 @@ export class User {
   })
   comments: Comments[];
 
-  @BeforeUpdate()
   @BeforeInsert()
-  hashPassword() {
-    this.password = hashSync(this.password, 10);
+  @BeforeUpdate()
+  hashPasssword() {
+    const isEncripted = getRounds(this.password);
+
+    if (!isEncripted) {
+      this.password = hashSync(this.password, 10);
+    }
   }
 }
