@@ -4,17 +4,18 @@ export interface ICommentRequest {
 
 export interface ICommentResponse extends ICommentRequest {
   id: string;
-}
-
-export interface ICommentListResponse {
-  id: string;
-  comment: string;
   createdAt: Date;
   updatedAt: Date;
-  users: {
+  userTo: {
     id: string;
-    isRecruiter: boolean;
-    email: string;
     name: string;
   };
+  userFrom: {
+    id: string;
+    name: string;
+  };
+}
+
+export interface ICommentUpdateRequest {
+  comment?: string;
 }

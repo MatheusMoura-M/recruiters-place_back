@@ -3,7 +3,7 @@ import { userProfileController } from "./getUserProfile.controller";
 import { updateUserController } from "./updateUser.controller";
 import { deleteUserController } from "./deleteUser.controller";
 import { getUserByIdController } from "./getUserById.controller";
-import { getAllUsersController } from "./getCars.controller";
+import { getAllUsersController } from "./getAllUsers.controller";
 
 export {
   createUserController,

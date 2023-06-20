@@ -13,7 +13,10 @@ export class Comments {
   id: string;
 
   @ManyToOne(() => User, (user) => user.id, { cascade: true })
-  users: User;
+  userTo: User;
+
+  @ManyToOne(() => User, (user) => user.id, { cascade: true })
+  userFrom: User;
 
   @Column()
   comment: string;

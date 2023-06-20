@@ -1,21 +1,25 @@
 import * as yup from "yup";
-import { ICommentListResponse } from "../../interfaces/comments";
+import { ICommentResponse } from "../../interfaces/comments";
 
-export const commentListAllSchema: yup.SchemaOf<ICommentListResponse[]> =
-  yup.array(
-    yup.object().shape({
-      id: yup.string().required(),
-      comment: yup.string().required(),
-      createdAt: yup.date().required(),
-      updatedAt: yup.date().required(),
-      users: yup
-        .object()
-        .shape({
-          id: yup.string().required(),
-          isRecruiter: yup.boolean().required(),
-          email: yup.string().email().required(),
-          name: yup.string().required(),
-        })
-        .required(),
-    })
-  );
+export const commentListAllSchema: yup.SchemaOf<ICommentResponse[]> = yup.array(
+  yup.object().shape({
+    updatedAt: yup.date().required(),
+    createdAt: yup.date().required(),
+    userFrom: yup
+      .object()
+      .shape({
+        id: yup.string().required(),
+        name: yup.string().required(),
+      })
+      .required(),
+    userTo: yup
+      .object()
+      .shape({
+        id: yup.string().required(),
+        name: yup.string().required(),
+      })
+      .required(),
+    comment: yup.string().required(),
+    id: yup.string().required(),
+  })
+);

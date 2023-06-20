@@ -57,7 +57,7 @@ export class User {
   @JoinColumn()
   tech: Techs;
 
-  @OneToMany(() => Comments, (comment) => comment.users, {
+  @OneToMany(() => Comments, (comment) => comment.userFrom, {
     onDelete: "CASCADE",
   })
   comments: Comments[];

@@ -5,9 +5,9 @@ import { userRepo } from "../../utils/repositories";
 export const getAllUsersService = async (): Promise<IUserResponse[]> => {
   const users = await userRepo.find();
 
-  const carsValidated = await getAllUsersSchema.validate(users, {
+  const usersValidated = await getAllUsersSchema.validate(users, {
     stripUnknown: true,
   });
 
-  return carsValidated;
+  return usersValidated;
 };
