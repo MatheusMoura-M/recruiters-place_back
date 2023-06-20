@@ -5,7 +5,8 @@ import {
   deleteUserController,
   updateUserController,
   userProfileController,
-  getUserController,
+  getUserByIdController,
+  getAllUsersController,
 } from "../controllers/user";
 import {
   userCreateRequestSchema,
@@ -20,6 +21,7 @@ userRoutes.post(
   createUserController
 );
 
+userRoutes.get("/", validateTokenMiddleware, getAllUsersController);
 userRoutes.get("/profile", validateTokenMiddleware, userProfileController);
 
 userRoutes.patch(
@@ -31,6 +33,6 @@ userRoutes.patch(
 
 userRoutes.delete("", validateTokenMiddleware, deleteUserController);
 
-userRoutes.get("/:id", getUserController);
+userRoutes.get("/:id", getUserByIdController);
 
 export default userRoutes;

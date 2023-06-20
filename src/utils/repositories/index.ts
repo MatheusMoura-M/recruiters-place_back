@@ -1,7 +1,8 @@
 import appDataSource from "../../data-source";
-import { Comments, User } from "../../entities";
+import { Comments, Techs, User } from "../../entities";
 
 const userRepo = appDataSource.getRepository(User);
 const commentsRepo = appDataSource.getRepository(Comments);
+const techsRepo = appDataSource.getRepository(Techs);
 
-export { userRepo, commentsRepo };
+export { userRepo, commentsRepo, techsRepo };

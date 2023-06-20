@@ -1,7 +1,7 @@
 import { AppError } from "../../error/appError.error";
 import { userRepo } from "../../utils/repositories";
 
-export const getUserService = async (userId: string) => {
+export const getUserByIdService = async (userId: string) => {
   const getUser = await userRepo.findOne({
     where: { id: userId },
   });

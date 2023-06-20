@@ -4,11 +4,12 @@ import "dotenv/config";
 import { AppError } from "../../error/appError.error";
 import { userRepo } from "../../utils/repositories";
 import { IUserLogin } from "../../interfaces/user";
+import { User } from "../../entities";
 
 export const loginService = async ({
   email,
   password,
-}: IUserLogin): Promise<{ token: string }> => {
+}: IUserLogin): Promise<{ accessToken: string; user: User }> => {
   const user = await userRepo.findOneBy({
     email: email,
   });
@@ -35,5 +36,5 @@ export const loginService = async ({
     }
   );
 
-  return { token: token };
+  return { accessToken: token, user: user };
 };
