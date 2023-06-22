@@ -66,7 +66,7 @@ export const createUserService = async (
     return clientWithoutPassword;
   }
 
-  const newUser = userRepo.create({ ...userData });
+  const newUser = userRepo.create({ ...userData, tech: null });
   await userRepo.save(newUser);
 
   const clientWithoutPasswordIsRecruiter =

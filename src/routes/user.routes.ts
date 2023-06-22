@@ -17,7 +17,7 @@ const userRoutes = Router();
 
 userRoutes.post(
   "",
-  // bodyValidator(userCreateRequestSchema),
+  bodyValidator(userCreateRequestSchema),
   createUserController
 );
 
