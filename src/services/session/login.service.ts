@@ -10,8 +10,13 @@ export const loginService = async ({
   email,
   password,
 }: IUserLogin): Promise<{ accessToken: string; user: User }> => {
-  const user = await userRepo.findOneBy({
-    email: email,
+  const user = await userRepo.findOne({
+    where: {
+      email: email,
+    },
+    relations: {
+      tech: true,
+    },
   });
 
   if (!user) {
@@ -35,6 +40,22 @@ export const loginService = async ({
       expiresIn: process.env.EXPIRES_IN,
     }
   );
+
+  if (user.isRecruiter) {
+    const userFoundIsRecruiter = await userRepo.findOne({
+      where: {
+        email: email,
+      },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        isRecruiter: true,
+      },
+    });
+
+    return { accessToken: token, user: userFoundIsRecruiter };
+  }
 
   return { accessToken: token, user: user };
 };

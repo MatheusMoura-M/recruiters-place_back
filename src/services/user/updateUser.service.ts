@@ -37,13 +37,6 @@ export const updateUserService = async (
       where: {
         id: id,
       },
-      select: {
-        id: true,
-        name: true,
-        email: true,
-        password: true,
-        isRecruiter: true,
-      },
     });
 
     const userUpdatedIsRecruiter = {
