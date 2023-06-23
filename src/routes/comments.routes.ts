@@ -18,7 +18,7 @@ commentsRoutes.post(
   createCommentController
 );
 
-commentsRoutes.get("/", getAllCommentsController);
+commentsRoutes.get("", getAllCommentsController);
 
 commentsRoutes.patch(
   "",
