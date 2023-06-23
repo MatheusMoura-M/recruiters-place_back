@@ -6,8 +6,9 @@ appDataSource
   .then(() => {
     console.log("server connected");
 
-    app.listen(3001, () => {
-      console.log("server in running on port 3001");
+    const port: number = Number(process.env.PORT) || 3001;
+    app.listen(port, "0.0.0.0", () => {
+      console.log(`server in running on port ${port}`);
     });
   })
   .catch((err) => console.error(err));
