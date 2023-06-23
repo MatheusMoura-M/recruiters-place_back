@@ -21,7 +21,7 @@ userRoutes.post(
   createUserController
 );
 
-userRoutes.get("/", validateTokenMiddleware, getAllUsersController);
+userRoutes.get("", validateTokenMiddleware, getAllUsersController);
 userRoutes.get("/profile", validateTokenMiddleware, userProfileController);
 
 userRoutes.patch(
